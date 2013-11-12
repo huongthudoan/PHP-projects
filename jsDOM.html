@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns = "http://wwww.w3.org/1999/xhtml">
+
+<script type="text/javascript">
+var doc = new ActiveXObject("Microsoft.XMLDOM");
+doc.async = false;
+doc.load("article.xml");
+var xmlObj = doc.documentElement;
+var xmlDoc = xmlObj.childNodes(1);
+xmlObj.childNodes(2).firstChild.text = "Raymond";
+//document.writeln("Node: " + xmlObj.childNodes(2).firstChild.text);
+//document.writeln("Node: " + xmlObj.parentNode.nodeName);
+var newNode = doc.createElement("date1");
+var newText = doc.createTextNode("November");
+newNode.appendChild(newText);
+var y = doc.getElementsByTagName("date")[0];
+document.writeln("Node: " + y.nodeName);
+xmlObj.replaceChild(newNode,y);
+document.writeln("Node: " + xmlObj.childNodes(1).nodeName);
+//doc.save("article2.xml");
+//var xmlhttp = new XMLHttpRequest();
+//xmlhttp.open("GET", "http://storm.cis.fordham.edu/~htran/article2.xml", true);
+//xmlhttp.send("testtest");
+//var fh = fopen("article2.xml");
+//fwrite(fh, 'this is a test');
+//fclose(fh);
+var fso  = new ActiveXObject("Scripting.FileSystemObject");
+   var fh = fso.CreateTextFile("TestArticle.txt", true);
+   fh.WriteLine("Some text goes here...");
+   fh.Close();
+
+</script>
+</html>
+
